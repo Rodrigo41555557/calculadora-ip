@@ -1,11 +1,13 @@
 body {
 	background-image: url("../img/planodefundo.jpg");
-	background-color: #cccccc;
-	background-position: center;
-	background-size: cover;
+	-webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+	background-repeat: no-repeat;
 }
 
-#divisor{
+.divisor{
 	clear: both;
 	margin-bottom: 3%;
 }
@@ -19,6 +21,4 @@ form{
 	text-align: center;
 }
 
-.bordao{
-	border: dotted;
-}
+
