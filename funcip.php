@@ -43,6 +43,8 @@
 	if ($mascara = 31){
 		$primIP = $endRede;
 		$ultIP = $endBroadcast;
+	}elseif ($mascara = 32){
+		$primIP and $ultIP = $grupo4;
 	}
 ?>
 
@@ -57,25 +59,13 @@
 							<h4>Resultados para o IP: <?= $grupo1.".".$grupo2.".".$grupo3.".".$grupo4." /".$mascara ?></h4>
 						</ul>
 					</li>
-
-					<li class="nav-item mx-auto">
-						<ul class="nav-link text-light">
-							<h8>Hosts para rede: <?= $ipsPorRede ?></h8>
-						</ul>
-					</li>
-
+					
 					<li class="nav-item mx-auto">
 						<ul class="nav-link text-light">
 							<h8>Número de Sub-redes: <?= $subredes ?></h8>
 						</ul>
 					</li>
-
-					<li class="nav-item mx-auto">
-						<ul class="nav-link text-light">
-							<h8>Número de Redes: <?= $redes ?></h8>
-						</ul>
-					</li>
-
+					
 					<li class="nav-item mx-auto">
 						<ul class="nav-link text-light">
 							<h8>Endereço de rede: <?= $grupo1.".".$grupo2.".".$grupo3.".".$endRede ?></h8>
@@ -87,13 +77,18 @@
 							<h8>Endereço Broadcast: <?= $grupo1.".".$grupo2.".".$grupo3.".".$endBroadcast ?></h8>
 						</ul>
 					</li>
-					
+
 					<li class="nav-item mx-auto">
 						<ul class="nav-link text-light">
-							<h8>Classe do IP: <?= classeIP($grupo1) ?></h8>
+							<h8>Hosts para rede: <?= $ipsPorRede ?></h8>
 						</ul>
 					</li>
 
+					<li class="nav-item mx-auto">
+						<ul class="nav-link text-light">
+							<h8>Número de Redes: <?= $redes ?></h8>
+						</ul>
+					</li>
 
 					<li class="nav-item mx-auto">
 						<ul class="nav-link text-light">
@@ -106,12 +101,20 @@
 							<h8>Último IP Válido: <?= $grupo1.".".$grupo2.".".$grupo3.".".$ultIP ?></h8>
 						</ul>
 					</li>
-
+					
 					<li class="nav-item mx-auto">
 						<ul class="nav-link text-light">
 							<h8>Máscara: 255.255.255.<?= $mascDecimal ?></h8>
 						</ul>
 					</li>
+					
+					<li class="nav-item mx-auto">
+						<ul class="nav-link text-light">
+							<h8>Classe do IP: <?= classeIP($grupo1) ?></h8>
+						</ul>
+					</li>
+
+					
 
 				</ul>
 
