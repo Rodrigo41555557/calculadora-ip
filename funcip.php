@@ -1,9 +1,9 @@
 <?php
 	//pega os grupos de bits do formulário
-	$grupo1  = (int)$_POST['grupo1'];
-	$grupo2  = (int)$_POST['grupo2'];
-	$grupo3  = (int)$_POST['grupo3'];
-	$grupo4  = (int)$_POST['grupo4'];
+	$grupoOct1  = (int)$_POST['grupo1'];
+	$grupoOct2  = (int)$_POST['grupo2'];
+	$grupoOct3  = (int)$_POST['grupo3'];
+	$grupoOct4  = (int)$_POST['grupo4'];
 	$mascara = (int)$_POST['mascara'];
 
 	$bits = 32 - $mascara;
@@ -11,23 +11,23 @@
 	$subedes = 256/$ipsRede;
 	$mascDecimal = 256 - $ipsRede;
 
-	$redes = (int)($grupo4/$ipsRede);
-	$endRede = $redes*$ipsRede;
+	$numredes = (int)($grupoOct4/$ipsRede);
+	$endRede = $numredes*$ipsRede;
 	$endBroadcast = $endRede+$ipsRede - 1;
 	
-	$primIP = $redes*$ipsRede + 1;
+	$primIP = $numredes*$ipsRede + 1;
 	$ultIP = $endBroadcast - 1;
 
 	function classeIP($grupo1){
-		if ($grupo1 >= "0" and $grupo1 <= "126") {
+		if ($grupo1 >= "0" and $grupoOct1 <= "126") {
 			$classe = "A";
-		}elseif ($grupo1 >= "128" and $grupo1 <= "191") {
+		}elseif ($grupoOct1 >= "128" and $grupoOct1 <= "191") {
 			$classe = "B";
-		}elseif ($grupo1 >= "192" and $grupo1 <= "223") {
+		}elseif ($grupoOct1 >= "192" and $grupoOct1 <= "223") {
 			$classe = "C";
-		}elseif ($grupo1 >= "224" and $grupo1 <= "239") {
+		}elseif ($grupoOct1 >= "224" and $grupoOct1 <= "239") {
 			$classe = "D";
-		}elseif ($grupo1 >= "240" and $grupo1 <= "255") {
+		}elseif ($grupoOct1 >= "240" and $grupoOct1 <= "255") {
 			$classe = "E";
 		}else{
 			$classe = "Localhost, Não pertence à nenhuma classe";
@@ -39,7 +39,7 @@
 		$primIP = $endRede;
 		$ultIP = $endBroadcast;
 	}elseif ($mascara = 32){
-		$primIP and $ultIP = $grupo4;
+		$primIP and $ultIP = $grupoOct4;
 	}
 ?>
 
@@ -51,7 +51,7 @@
 
 					<li class="nav-item mx-auto">
 						<ul class="nav-link text-light">
-							<h4>Resultados para o IP: <?= $grupo1.".".$grupo2.".".$grupo3.".".$grupo4." /".$mascara ?></h4>
+							<h4>Resultados para o IP: <?= $grupoOct1.".".$grupoOct2.".".$grupoOct3.".".$grupoOct4." /".$mascara ?></h4>
 						</ul>
 					</li>
 					
@@ -63,13 +63,13 @@
 					
 					<li class="nav-item mx-auto">
 						<ul class="nav-link text-light">
-							<h8>Endereço de rede: <?= $grupo1.".".$grupo2.".".$grupo3.".".$endRede ?></h8>
+							<h8>Endereço de rede: <?= $grupoOct1.".".$grupoOct2.".".$grupoOct3.".".$endRede ?></h8>
 						</ul>
 					</li>
 					
 					<li class="nav-item mx-auto">
 						<ul class="nav-link text-light">
-							<h8>Endereço Broadcast: <?= $grupo1.".".$grupo2.".".$grupo3.".".$endBroadcast ?></h8>
+							<h8>Endereço Broadcast: <?= $grupoOct1.".".$grupoOct2.".".$grupoOct3.".".$endBroadcast ?></h8>
 						</ul>
 					</li>
 
@@ -87,13 +87,13 @@
 
 					<li class="nav-item mx-auto">
 						<ul class="nav-link text-light">
-							<h8>Primeiro IP Válido: <?= $grupo1.".".$grupo2.".".$grupo3.".".$primIP ?></h8>
+							<h8>Primeiro IP Válido: <?= $grupoOct1.".".$grupoOct2.".".$grupoOct3.".".$primIP ?></h8>
 						</ul>
 					</li>
 
 					<li class="nav-item mx-auto">
 						<ul class="nav-link text-light">
-							<h8>Último IP Válido: <?= $grupo1.".".$grupo2.".".$grupo3.".".$ultIP ?></h8>
+							<h8>Último IP Válido: <?= $grupoOct1.".".$grupoOct2.".".$grupoOct3.".".$ultIP ?></h8>
 						</ul>
 					</li>
 					
@@ -107,7 +107,7 @@
 					
 					<li class="nav-item mx-auto">
 						<ul class="nav-link text-light">
-							<h8>Classe do IP: <?= classeIP($grupo1) ?></h8>
+							<h8>Classe do IP: <?= classeIP($grupoOct1) ?></h8>
 						</ul>
 					</li>
 
