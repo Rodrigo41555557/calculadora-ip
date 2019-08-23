@@ -1,8 +1,5 @@
 <?php
-
-//recebe dados do formulario e faz os calculos
-
-
+	//pega os grupos de bits do formulário
 	$grupo1  = (int)$_POST['grupo1'];
 	$grupo2  = (int)$_POST['grupo2'];
 	$grupo3  = (int)$_POST['grupo3'];
@@ -10,19 +7,18 @@
 	$mascara = (int)$_POST['mascara'];
 
 	$bits = 32 - $mascara;
-	$ipsPorRede = pow(2, $bits);
-	$subredes = 256/$ipsPorRede;
-	$mascDecimal = 256 - $ipsPorRede;
+	$ipsRede = pow(2, $bits);
+	$subedes = 256/$ipsRede;
+	$mascDecimal = 256 - $ipsRede;
 
-	$redes = (int)($grupo4/$ipsPorRede);
-	$endRede = $redes*$ipsPorRede;
-	$endBroadcast = $endRede+$ipsPorRede - 1;
+	$redes = (int)($grupo4/$ipsRede);
+	$endRede = $redes*$ipsRede;
+	$endBroadcast = $endRede+$ipsRede - 1;
 	
-	$primIP = $redes*$ipsPorRede + 1;
+	$primIP = $redes*$ipsRede + 1;
 	$ultIP = $endBroadcast - 1;
 
 	function classeIP($grupo1){
-		
 		if ($grupo1 >= "0" and $grupo1 <= "126") {
 			$classe = "A";
 		}elseif ($grupo1 >= "128" and $grupo1 <= "191") {
@@ -39,7 +35,6 @@
 		return $classe;
 	}
 
-	
 	if ($mascara = 31){
 		$primIP = $endRede;
 		$ultIP = $endBroadcast;
@@ -80,7 +75,7 @@
 
 					<li class="nav-item mx-auto">
 						<ul class="nav-link text-light">
-							<h8>Hosts para rede: <?= $ipsPorRede ?></h8>
+							<h8>Hosts para rede: <?= $ipsRede ?></h8>
 						</ul>
 					</li>
 
@@ -102,6 +97,8 @@
 						</ul>
 					</li>
 					
+					// Destacar na exibição o bloco de informações em que o endereço informado estiver localizado
+					
 					<li class="nav-item mx-auto">
 						<ul class="nav-link text-light">
 							<h8>Máscara: 255.255.255.<?= $mascDecimal ?></h8>
@@ -114,15 +111,8 @@
 						</ul>
 					</li>
 
-					
-
 				</ul>
 
 			</form>
 
 		</nav>
-
-
-
-
-
