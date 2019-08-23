@@ -18,6 +18,13 @@
 	$primIP = $numredes*$ipsRede + 1;
 	$ultIP = $endBroadcast - 1;
 
+	if ($mascara = 31){
+		$primIP = $endRede;
+		$ultIP = $endBroadcast;
+	}elseif ($mascara = 32){
+		$primIP and $ultIP = $grupoOct4;
+	}
+
 	function classeIP($grupo1){
 		if ($grupo1 >= "0" and $grupoOct1 <= "126") {
 			$classe = "A";
@@ -35,12 +42,16 @@
 		return $classe;
 	}
 
-	if ($mascara = 31){
-		$primIP = $endRede;
-		$ultIP = $endBroadcast;
-	}elseif ($mascara = 32){
-		$primIP and $ultIP = $grupoOct4;
+	function pubORpriv($o1, $o2, $o3, $o4){
+		$cond = " ";
+		if($o1 == "192" and $o2 == "168" or $o1 == "172" and $o2 >= "16" and $o2 <= "31" or $o1 = "10" or $o1 = "127"){
+			$cond = "Privado";
+		}else{
+			$cond = "Público";
+		}
+		return $cond;
 	}
+	
 ?>
 
 	<nav class="navbar  navbar-light mx-auto bordao" >                      
@@ -108,6 +119,12 @@
 					<li class="nav-item mx-auto">
 						<ul class="nav-link text-light">
 							<h8>Classe do IP: <?= classeIP($grupoOct1) ?></h8>
+						</ul>
+					</li>
+					
+					<li class="nav-item mx-auto">
+						<ul class="nav-link text-light">
+							<h8>Tipo: <?= pubORpriv($grupoOct1, $grupoOct2, $grupoOct3, $grupoOct4) ?></h8>
 						</ul>
 					</li>
 
